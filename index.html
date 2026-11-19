@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mathematics--Hub | A platform for Mathematics Education and Research</title>
+  <meta name="description" content="A platform for Mathematics Education and Research. Explore Mathematics • Learn • Research • Innovate">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="logo.png">
+  
+  <style>
+    :root {
+      --primary: #0a2a5e;
+      --primary-light: #1a4a8a;
+      --accent: #f0c040;
+      --accent-dark: #d4a017;
+      --text: #1a1a2e;
+      --text-light: #555;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --shadow: 0 10px 40px rgba(10, 42, 94, 0.12);
+      --radius: 16px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: white;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: white;
+    }
+
+    .logo-link img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      object-fit: cover;
+    }
+
+    .logo-text {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .logo-text span {
+      color: var(--accent);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.25s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 420px;
+      background: url('banner.png') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10,42,94,0.55), rgba(10,42,94,0.75));
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 0 1.5rem;
+    }
+
+    .hero-logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid var(--accent);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+      margin-bottom: 1.25rem;
+      background: white;
+      object-fit: cover;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      letter-spacing: -0.5px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      opacity: 0.95;
+      margin-bottom: 1.75rem;
+      font-weight: 400;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.75rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--primary);
+      box-shadow: 0 4px 15px rgba(240, 192, 64, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(240, 192, 64, 0.5);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255,255,255,0.7);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.15);
+      border-color: white;
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .section-title p {
+      color: var(--text-light);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Features Grid */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.75rem;
+      margin-bottom: 4rem;
+    }
+
+    .feature-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem 1.75rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s, box-shadow 0.25s;
+      border: 1px solid rgba(10,42,94,0.06);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(10, 42, 94, 0.15);
+    }
+
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 1.25rem;
+      color: white;
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      color: var(--primary);
+      margin-bottom: 0.6rem;
+      font-weight: 700;
+    }
+
+    .feature-card p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+
+    /* Topics Section */
+    .topics {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      border-radius: 24px;
+      padding: 3rem 2rem;
+      color: white;
+      margin-bottom: 4rem;
+      text-align: center;
+    }
+
+    .topics h2 {
+      font-size: 1.9rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .topics > p {
+      opacity: 0.9;
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
+    }
+
+    .topic-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+
+    .tag {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(4px);
+      padding: 0.55rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid rgba(255,255,255,0.25);
+      transition: all 0.2s;
+    }
+
+    .tag:hover {
+      background: var(--accent);
+      color: var(--primary);
+      border-color: var(--accent);
+    }
+
+    /* About / CTA */
+    .cta-section {
+      text-align: center;
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 3.5rem 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-section h2 {
+      font-size: 1.9rem;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-section p {
+      color: var(--text-light);
+      max-width: 560px;
+      margin: 0 auto 1.75rem;
+      font-size: 1.05rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary);
+      color: rgba(255,255,255,0.85);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      margin-bottom: 1rem;
+      object-fit: cover;
+    }
+
+    footer p {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        height: 380px;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1.05rem;
+      }
+      .hero-logo {
+        width: 90px;
+        height: 90px;
+      }
+      nav ul {
+        display: none;
+      }
+      .section-title h2 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo-link">
+        <img src="logo.png" alt="Mathematics Research Hub Logo">
+        <div class="logo-text">Mathematics<span>--</span>Hub</div>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#topics">Topics</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="https://github.com/smk786554/Mathematics--Hub" target="_blank">GitHub</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <img src="logo.png" alt="Mathematics Research Hub" class="hero-logo">
+      <h1>Mathematics<span>--</span>Hub</h1>
+      <p>A platform for Mathematics Education and Research</p>
+      <div class="cta-buttons">
+        <a href="#features" class="btn btn-primary">Explore Now</a>
+        <a href="https://github.com/smk786554/Mathematics--Hub" target="_blank" class="btn btn-secondary">View on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main -->
+  <main>
+    <!-- Features -->
+    <section id="features">
+      <div class="section-title">
+        <h2>What We Offer</h2>
+        <p>Building a complete ecosystem for learning, teaching, and researching mathematics</p>
+      </div>
+
+      <div class="features">
+        <div class="feature-card">
+          <div class="feature-icon">📚</div>
+          <h3>Structured Learning</h3>
+          <p>Clear pathways from foundational concepts to advanced topics. Calculus, Linear Algebra, Differential Equations, and more.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🔬</div>
+          <h3>Research Focus</h3>
+          <p>Resources and tools designed for both students and researchers who want to go deeper into mathematical theory.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">💡</div>
+          <h3>Interactive Content</h3>
+          <p>Visual explanations, worked examples, and problem-solving approaches that make abstract ideas concrete.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🌐</div>
+          <h3>Open Knowledge</h3>
+          <p>Open-source and community-driven. Contribute, share, and grow the platform together.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topics -->
+    <section class="topics" id="topics">
+      <h2>Core Topics</h2>
+      <p>Explore the mathematical landscape</p>
+      <div class="topic-tags">
+        <span class="tag">Calculus</span>
+        <span class="tag">Linear Algebra</span>
+        <span class="tag">Differential Equations</span>
+        <span class="tag">Numerical Methods</span>
+        <span class="tag">Real Analysis</span>
+        <span class="tag">Abstract Algebra</span>
+        <span class="tag">Probability & Statistics</span>
+        <span class="tag">Discrete Mathematics</span>
+        <span class="tag">Number Theory</span>
+        <span class="tag">Mathematical Modelling</span>
+      </div>
+    </section>
+
+    <!-- About / CTA -->
+    <section class="cta-section" id="about">
+      <h2>Join the Journey</h2>
+      <p>
+        Mathematics--Hub is being built as a home for anyone passionate about mathematics — 
+        whether you're a student, educator, or researcher. 
+        The platform is just getting started.
+      </p>
+      <div class="cta-buttons">
+        <a href="https://github.com/smk786554/Mathematics--Hub" target="_blank" class="btn btn-primary">
+          Star on GitHub ★
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <img src="logo.png" alt="Logo" class="footer-logo">
+      <p><strong>Mathematics--Hub</strong></p>
+      <p>A platform for Mathematics Education and Research</p>
+      <p style="margin-top: 0.75rem;">
+        <a href="https://github.com/smk786554/Mathematics--Hub" target="_blank">GitHub Repository</a>
+      </p>
+      <div class="footer-bottom">
+        © 2026 Mathematics--Hub · Built with ❤️ for the math community
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
